@@ -1,0 +1,84 @@
+#include <stdio.h>
+#include <stdlib.h>
+struct node
+{
+	int data;
+	struct node *pre;
+	struct node *next;
+};
+typedef struct node Node;
+Node *head=NULL,*tail=NULL;
+#define max 5
+int creation();
+int del();
+int print();
+int main()
+{
+	creation();
+	del();
+	print();
+	return 0;
+}
+int creation()
+{
+	int limit=max;
+	Node *store;
+	while(limit>0)
+	{
+		limit--;
+		store=( Node* )malloc(sizeof(Node));
+		printf("Enter data : ");
+		scanf("%d",&(store->data));
+		store->next=NULL;
+		store->pre=NULL;
+		if(head==NULL)
+		{
+			head=store;
+			tail=head;
+		}
+		else
+		{
+			store->pre=tail;
+			tail->next=store;
+			tail=tail->next;
+		}
+
+	}
+	return 0;
+}
+int print()
+{
+	Node *n=head;
+	while(n!=NULL)
+	{
+		printf("%d  ",n->data);
+		n=n->next;
+	}
+	printf("\n");
+	return 0;
+}
+int del()
+{
+	int num1,num2;
+	printf("Enter the first and second number : ");
+	scanf("%d %d",&num1,&num2);
+	Node *x=head,*y=head->next,*temp;
+	while(y!=NULL)
+	{
+		if(x->data==num1 && y->data==num2)
+		{
+			temp=y;
+			y=y->next;
+			x->next=y;
+			if(y!=NULL)
+				y->pre=x;
+			free(temp);
+		}
+		else
+		{
+			x=x->next;
+			y=y->next;
+		}
+	}
+	return 0;
+}
