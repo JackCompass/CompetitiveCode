@@ -1,0 +1,89 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define size 6
+int limit=size;
+int arr[size];
+int creation()
+{
+	int i=0;
+	while(i<size)
+	{
+		printf("Enter data : ");
+		scanf("%d",&arr[i]);
+		i++;
+	}
+	return 0;
+}
+int insert();
+int delete();
+int display();
+int main()
+{
+	int choice;
+	creation();
+	do
+	{
+		printf("1) Insert \n2) Delete \n3) Display \n4) Exit \nEnter your choice :");
+		scanf("%d",&choice);
+		switch (choice)
+		{
+			case 1: insert();
+			break;
+			case 2: delete();
+			break;
+			case 3: display();
+			break;
+			case 4: exit(0);
+			break;
+			default : printf("You have entered wrong choice.\n");
+		}
+	}while(1);
+	return 0;
+}
+int insert()
+{
+	int data,pos,temp,i=size-1;
+	printf("Enter data and its position :");
+	scanf("%d %d",&data,&pos);
+	if(limit<size)
+	{
+		limit++;
+	}
+	if( pos==size)
+	{
+		arr[pos-1]=data;
+		return 0;
+	}
+	while( pos<size)
+	{
+		arr[i]=arr[i-1];
+		i--;
+		pos++;
+	}
+	arr[i]=data;
+	return 0;
+}
+int delete()
+{
+	int pos;
+	printf("Enter the position of the element you want to delete : ");
+	scanf ("%d",&pos);
+	while(pos<size)
+	{
+		arr[pos-1]=arr[pos];
+		pos++;
+	}
+	limit--;
+	return 0;
+
+}
+int display()
+{
+	int i=0;
+	for(i=0;i<limit;i++)
+	{
+		printf("%d ",arr[i]);
+	}
+	printf("\n");
+	return 0;
+}
