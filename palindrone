@@ -1,0 +1,66 @@
+#include <stdio.h>
+#include <stdlib.h>
+int num( int );
+int count_zero( int );
+int palindrone( int );
+int  main()
+{
+    int digit=3;
+    num(digit);
+    return 0;
+}
+int num( int digit )
+{
+    int i,check,sum=0;
+    for( i=100; i<1000 ;i++)
+    {
+        if( i%9!=0)
+        {
+            continue;
+        }
+        check=count_zero( i );
+        if (check==1)
+        {
+            continue;
+        }
+        check=palindrone( i );
+        if (check==1)
+        {
+            continue;
+        }
+        sum=sum+i;
+    }
+    printf("the sum is %d",sum);
+    return 0;
+}
+int count_zero( int num)
+{
+    int rem,count=0;
+    while(num>0)
+    {
+        rem=num%10;
+        if(rem==0)
+        {
+            count++;
+        }
+        num/=10;
+    }
+    if (count>0)
+        return 1;
+    else
+        return 0;
+}
+int palindrone( int num)
+{
+    int sum=0,rem=0,temp=num;
+    while (num>0)
+    {
+        rem=num%10;
+        sum=sum*10+rem;
+        num/=10;
+    }
+    if( sum==temp)
+        return 0;
+    else
+        return 1;
+}
