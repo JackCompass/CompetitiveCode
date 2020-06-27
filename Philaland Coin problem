@@ -1,0 +1,37 @@
+# CodeVita probelm test 
+# First Problem : Philaland Coin
+
+# Taking input of the highest denomination
+highest_price = int(input())
+
+# To find sum of n natural numbers
+
+def sum_of_intergers( num ):
+	return (num *(num + 1))/2
+
+
+# Finding two numbers between which the answer will lie.
+
+def high_and_low( price ):
+	counter = 10
+	while( counter <= 100 ):
+		tot = sum_of_intergers( counter )
+		if tot > price:
+			return counter
+		else:
+			counter += 10
+
+# The higher number
+high = high_and_low( highest_price )
+
+# The lower number
+low = high - 10 
+
+# loop to find the actual minimum number of denominations
+for x in range(low,high + 1):
+	total = sum_of_intergers(x)
+	if total >= highest_price:
+		print(x)
+		break
+	else:
+		x += 1
