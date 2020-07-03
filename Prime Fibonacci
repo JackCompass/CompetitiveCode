@@ -1,0 +1,70 @@
+# Program to generate the fibonacci number based on the list of a prime number.
+
+# List of prime numbers.
+prime = []
+prime_combination = []
+prime_final = []
+
+# Function to check the condition of the prime number.
+def prime_con(a):
+	if a <= 1:
+		return -1
+	for i in range(2,a):
+		if a % i == 0:
+			return -1
+	return a
+
+# Function to append the prime array with the prime numbers.
+def prime_num(a,b):
+	for i in range(a,b+1):
+		num = prime_con(i)
+		if num == -1:
+			continue
+		else:
+			prime.append(num)
+
+# Fibonacci series function.
+def fibonacci(a,b,c):
+	if c == 2:
+		print(f"{a} {b}")
+	else:
+		while c > 2:
+			total = a + b
+			if c == 3:
+				print(total)
+			b = total
+			a = b - a
+			c -= 1
+
+# Taking input of two numbers between 1 and 100 from the user.
+num1 = int(input("Enter first num : "))
+num2 = int(input("Enter second num : "))
+
+prime_num(num1,num2)
+
+# Making a list with the combination of all the elements in the prime list.
+
+for x in prime:
+	for y in prime:
+		if x == y:
+			continue
+		prime_combination.append(str(x)+str(y))
+
+# Creating a list of prime numbers from the prime_combination list.
+
+for x in prime_combination:
+	num = prime_con(int(x))
+	if num == -1:
+		continue
+	else:
+		prime_final.append(num)
+	
+# Removing all the duplicate element in the prime final list.
+
+prime_final = list(set(prime_final))
+
+# Calling Fibonacci function to generate the fibonacci series 
+
+fibonacci(min(prime_final),max(prime_final),len(prime_final))
+
+
