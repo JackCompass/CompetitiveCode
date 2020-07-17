@@ -1,0 +1,40 @@
+# To determine the frequency of all elements in a given array.
+# Taking size of the array as input until the given constraint is satisfied. Constraint : Array (list) size must be greater or equal to 5.
+
+while True:
+	list_size = int(input("Enter the size of the list : "))
+	if list_size >= 5:
+		break
+
+# List to store all the elements.
+
+num_list = []
+
+# Taking elements as input from the user.
+
+print("Enter the elemnts of the list.")
+for x in range(0, list_size): 
+	num = int(input())
+	num_list.append(num)
+
+# A list derived from num_list with no duplicate elements.
+
+num2_list = list(set(num_list))
+
+# Function to count the frequency of an element.
+# list_1 with all elements.
+# list_2 with no duplicate elements and derived from list_1.
+
+def element_frequency(list_1, list_2):
+	for i in list_2:
+		count = 0
+		for y in list_1:
+			if i == y:
+				count += 1
+
+		print(f"{i}: {count} times")
+
+# Calling element_frequency.
+
+element_frequency(num_list, num2_list)
+
