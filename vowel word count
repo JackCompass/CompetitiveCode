@@ -1,0 +1,38 @@
+# To count the number of words which starts with a vowel in a given string.
+# Input Constraint = Max size of string is 500.
+
+# Taking input till the given constraint doesn't satisfy.
+
+while True :
+	str = input("Enter a string ( Max size = 500 ) : ")
+	if (len(str) <= 500) :
+		break
+	else :
+		print(f"Entered string has a length {len(str)}")
+
+
+# A list containing all the vowels in lower case letters.
+
+vowels = ['a','e','i','o','u']
+
+# A counter which will count the words starting with vowel alphabets.
+
+word_count = 0
+
+# Creating a list of the all the letters in the user given string.
+
+words_in_str = str.split(" ")
+
+# For loop to check the first letter of every word.
+# Converting the first alphabet into the lowercase in case if it is uppercase.
+
+for word in words_in_str:
+	first_letter = word[0].lower()
+
+	if first_letter in vowels:
+		word_count += 1
+
+print(f"Total words starting with alphabets in the given string is : {word_count}")
+		
+
+	
