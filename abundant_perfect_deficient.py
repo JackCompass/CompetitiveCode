@@ -1,4 +1,4 @@
-# To calculate whether the user given input is abundant, perfect or deficient number.
+# To evaluate the user given input is abundant, perfect or deficient number.
 # Input Constraint : 10 <= input_num <= 2000
 
 # Taking input from the user following the given Constraint.
