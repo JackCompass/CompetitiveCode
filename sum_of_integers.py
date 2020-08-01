@@ -45,8 +45,3 @@ if __name__ == "__main__" :
 
 	# desired output.
 	print(f"The sum of all the integers is : {total}")
-
-	print(f"The largest integer is : {largets_digit(user_list)}")
-
-
-
