@@ -1,6 +1,11 @@
 # Program to return sum of integers of a list.
 # Input constraint : size of list > 5
 
+# return -> largest digit in the list.
+
+def  largets_digit(any_list) :
+	return max(any_list)
+
 # will return the list with all user inputs.
 
 def data_entry(any_list, list_size) :
@@ -45,6 +50,8 @@ if __name__ == "__main__" :
 
 	# desired output.
 	print(f"The sum of all the integers is : {total}")
+
+	print(f"The largest integer is : {largets_digit(user_list)}")
 
 
 
