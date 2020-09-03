@@ -1,111 +1,94 @@
 # include <iostream>
 using namespace std;
 
-class ListNode
+class Node
 {
 	public :
 	int val;
-	ListNode *next;
+	Node *next;
 };
 
-void printList(ListNode *start)
+void printList(Node *head)
 {
-	while(start != NULL)
+	while(head != NULL)
 	{
-		cout << start->val << " ";
-		start = start->next;
+		cout << head->val << endl;
+		head = head->next;
 	}
-	cout << endl;
 }
 
-void Listadd(ListNode *head1, ListNode *head2)
+void swapnodes(Node **start, int item1, int item2)
 {
-	ListNode *l3 = NULL, *track = NULL;
-	int carry = 0, total = 0;
-	while (head1 != NULL or head2 != NULL or carry > 0 )
+	if (item1 == item2)
+		return;
+	
+	Node *preX = NULL, *currX = *start;
+	while(currX != NULL && currX->val != item1)
 	{
-		if (head1 != NULL)
-		{
-			total += head1->val;
-			head1 = head1->next;
-		}
-		if (head2 != NULL)
-		{
-			total += head2->val;
-			head2 = head2->next;
-		}
-		total += carry;
-		carry = 0;
-		if (total > 9)
-		{
-			int rem = total % 10;
-			total = total / 10;
-			carry = total;
-			total = rem;
-		}
-		ListNode *newnode = new ListNode();
-		newnode->val = total;
+		preX = currX;
+		currX = currX->next;
+	}
+
+	Node *preY = NULL, *currY = *start;
+	while(currY != NULL && currY->val != item2)
+	{
+		preY = currY;
+		currY = currY->next;
+	}
+	if (currX == NULL || currY == NULL)
+		return;
+
+	if (preX != NULL)
+	{
+		preX->next = currY;
+	}
+	else
+	{
+		*start = currY;
+	}
+	if (preY != NULL)
+	{
+		preY->next = currX;
+	}
+	else 
+	{
+		*start = currX;
+	}
+
+	Node *temp = currY->next;
+	currY->next = currX->next;
+	currX->next = temp;
+
+}
+
+int main()
+{
+	int num = 5;
+	int key1, key2;
+	Node *head = NULL, *track = NULL;
+	while(num--)
+	{
+		int data; 
+		cin >> data;
+		Node *newnode = new Node();
+		newnode->val = data;
 		newnode->next = NULL;
-		if (l3 == NULL)
+		if (head == NULL)
 		{
-			l3 = newnode;
-			track = l3;
+			head = newnode;
+			track = head;
 		}
 		else
 		{
 			track->next = newnode;
 			track = newnode;
 		}
-		total = 0;
-	}
-	printList(l3);
-}
 
-int main()
-{
-	int num = 5;
-	int call = 9;
-	ListNode *head1 = NULL;
-	ListNode *head2 = NULL;
-	ListNode *start1 = NULL;
-	ListNode *start2 = NULL;
-
-	while( num)
-	{
-		ListNode *newnode = new ListNode();
-		newnode->val = num;
-		newnode->next = NULL;
-		if (head1 == NULL)
-		{
-			head1 = newnode;
-			start1 = head1;
-		}
-		else 
-		{
-			head1->next = newnode;
-			head1 = head1->next;
-		}
-		num--;
 	}
-	while(call >= 5)
-	{
-		ListNode *newnode = new ListNode();
-		newnode->val = call;
-		newnode->next = NULL;
-		if (head2 == NULL)
-		{
-			head2 = newnode;
-			start2 = head2;
-		}
-		else 
-		{
-			head2->next = newnode;
-			head2 = head2->next;
-		}
-		call--;
-	}
-	printList(start1);
-	printList(start2);
-	Listadd(start1, start2);
+	printList(head);
+	cout << "Enter key : ";
+	cin >> key1 >> key2;
+	swapnodes(&head, key1, key2);
+	printList(head);
 	return 0;
 }
