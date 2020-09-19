@@ -4,6 +4,7 @@ using namespace std;
 
 int main()
 {
+	// user input.
 	string s = "abc";
 	vector< vector<int>> counter;
 	int start = 0, end = 0;
