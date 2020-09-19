@@ -5,7 +5,7 @@ using namespace std;
 int main()
 {
 	// user input.
-	string s = "abc";
+	string s = "abbxxxxzzy";
 	vector< vector<int>> counter;
 	int start = 0, end = 0;
 	int count = 1;
@@ -18,9 +18,7 @@ int main()
 				count = 1;
 				if (start)
 				{
-					vector<int > vect;
-					vect.push_back(start);
-					vect.push_back(end);
+					vector<int > vect {start, end};
 					counter.push_back(vect);
 				}
 				start = 0;
